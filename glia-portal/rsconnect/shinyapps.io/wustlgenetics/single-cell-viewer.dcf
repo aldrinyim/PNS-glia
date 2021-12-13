@@ -1,0 +1,12 @@
+name: single-cell-viewer
+title: single-cell-viewer
+username:
+account: wustlgenetics
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3446584
+bundleId: 4103657
+url: https://wustlgenetics.shinyapps.io/single-cell-viewer/
+when: 1610782607.45418
+asMultiple: FALSE
+asStatic: FALSE

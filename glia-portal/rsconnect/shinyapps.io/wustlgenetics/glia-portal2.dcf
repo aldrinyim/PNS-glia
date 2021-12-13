@@ -1,0 +1,12 @@
+name: glia-portal2
+title: glia-portal2
+username:
+account: wustlgenetics
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4781143
+bundleId: 5096126
+url: https://wustlgenetics.shinyapps.io/glia-portal2/
+when: 1633150515.78455
+asMultiple: FALSE
+asStatic: FALSE

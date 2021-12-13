@@ -1,0 +1,12 @@
+name: shiny_app
+title: shiny_app
+username:
+account: glial
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3426230
+bundleId: 4021481
+url: https://glial.shinyapps.io/shiny_app/
+when: 1608706015.58025
+asMultiple: FALSE
+asStatic: FALSE
