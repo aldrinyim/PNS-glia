@@ -33,15 +33,15 @@ For the Circos plot, circos-0.69-6 was used.
 User will have to install R and Python3 with the specific version number stated above. RStudio is recommended for running the R codes. The Python libraries can be installed through the Python Package Installer pip3. No compilation is required for both R and Python codes and can be run directly.
 
 For all python codes, the arguments will be shown when executed, for example : 
-Bash - python3 module-based_analysis.py
+Bash - python3 module-based_analysis.py\
 
-usage: module-based_analysis.py [-h] [-s SCRNA] [-c CLUSTER] [-g GTF]
+usage: module-based_analysis.py [-h] [-s SCRNA] [-c CLUSTER] [-g GTF]\
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -s SCRNA, --scRNA SCRNA
-                        ESSENTIAL Single cell RNA-seq matrix
-  -c CLUSTER, --cluster CLUSTER
-                        ESSENTIAL Cluster identity from Seurat
-  -g GTF, --gtf GTF     ESSENTIAL GTF file
+optional arguments:\
+  -h, --help            show this help message and exit\
+  -s SCRNA, --scRNA SCRNA\
+                        ESSENTIAL Single cell RNA-seq matrix\
+  -c CLUSTER, --cluster CLUSTER\
+                        ESSENTIAL Cluster identity from Seurat\
+  -g GTF, --gtf GTF     ESSENTIAL GTF file\
 
