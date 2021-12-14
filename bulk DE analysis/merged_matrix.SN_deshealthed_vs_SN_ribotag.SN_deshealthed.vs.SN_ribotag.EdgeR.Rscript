@@ -1,0 +1,24 @@
+library(edgeR)
+
+data = read.table("/Users/aldrinyim/Box Sync/Sciatic Nerve vs Vagus Nerve/de_analysis/merged_matrix", header=T, row.names=1, com='')
+col_ordering = c(5,6,7,8,9,10)
+rnaseqMatrix = data[,col_ordering]
+rnaseqMatrix = round(rnaseqMatrix)
+rnaseqMatrix = rnaseqMatrix[rowSums(cpm(rnaseqMatrix) > 1) >= 2,]
+conditions = factor(c(rep("SN_deshealthed", 3), rep("SN_ribotag", 3)))
+
+exp_study = DGEList(counts=rnaseqMatrix, group=conditions)
+exp_study = calcNormFactors(exp_study)
+exp_study = estimateCommonDisp(exp_study)
+exp_study = estimateTagwiseDisp(exp_study)
+et = exactTest(exp_study, pair=c("SN_deshealthed", "SN_ribotag"))
+tTags = topTags(et,n=NULL)
+result_table = tTags$table
+result_table = data.frame(sampleA="SN_deshealthed", sampleB="SN_ribotag", result_table)
+result_table$logFC = -1 * result_table$logFC
+write.table(result_table, file='merged_matrix.SN_deshealthed_vs_SN_ribotag.edgeR.DE_results', sep='	', quote=F, row.names=T)
+write.table(rnaseqMatrix, file='merged_matrix.SN_deshealthed_vs_SN_ribotag.edgeR.count_matrix', sep='	', quote=F, row.names=T)
+source("/Users/aldrinyim/utilities/trinityrnaseq-Trinity-v2.5.1/Analysis/DifferentialExpression/R/rnaseq_plot_funcs.R")
+pdf("merged_matrix.SN_deshealthed_vs_SN_ribotag.edgeR.DE_results.MA_n_Volcano.pdf")
+plot_MA_and_Volcano(rownames(result_table), result_table$logCPM, result_table$logFC, result_table$FDR)
+dev.off()

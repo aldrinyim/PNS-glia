@@ -297,7 +297,3 @@ allnerves.integrated <- RunUMAP(allnerves.integrated, dims = 1:10)
 allnerves.integrated <- RunTSNE(allnerves.integrated, dims.use = 1:8)
 
 saveRDS(allnerves.integrated,"allnerves_v23_mpz-act-regressMito-merged_22Jan2021.RDS")
-
-magic_sciatic.integrated <- magic(sciatic.integrated,genes=sciatic.features)
-
-saveRDS(magic_sciatic.integrated,"magic_sciatic_v23_mpz-act-regressMito-merged_22Jan2021.RDS")

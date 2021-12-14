@@ -94,7 +94,6 @@ DimPlot(schwannoma.integrated, reduction = "umap", label = TRUE, pt.size = 0.3,
 
 DimPlot(schwannoma.integrated,reduction = "umap", group.by = "tech",pt.size=0.01)
 immunegenes = c("Prx","Scn7a","Pdgfra","Cd34","Mki67","Ngfr","Fabp4")
-immunegenes = c("CCR2","LYVE1","TREM2","MKI67")
 FeaturePlot(schwannoma.integrated, features = immunegenes, cols = c("steelblue","yellow","red"), min.cutoff = 0, max.cutoff = 4,pt.size=0.01,reduction="umap")
 p <- FeaturePlot(schwannoma.integrated, features = immunegenes, cols = c("steelblue","yellow","red"), min.cutoff = 0, max.cutoff = 4,pt.size=0.01,reduction="umap",combine=FALSE)
 for(i in 1:length(p)) {
@@ -154,28 +153,3 @@ sciaticv3_neuralcrest_v2@misc$meta.info$Title <- "sciatic v3 seurat3 analysis"
 DimPlot(sciaticv3_neuralcrest_v2, reduction = "tsne", group.by = "tech", pt.size=2)
 
 saveRDS(sciaticv3_neuralcrest_v2,file="sciatic-v3-gfp/seurat3_merged/sciaticv3_neuralcrestOnly_visualize.RDS")
-sciaticv3_neuralcrest_v2 <- readRDS("sciatic-v3-gfp/aligned_cc_sciatic_nerves_v3-endofib-schwann-finalized_GFP-16Dec2019.RData")
-sciaticv3_neuralcrest_v2 <- UpdateSeuratObject(sciaticv3_neuralcrest_v2)
-
-sciaticv3_neuralcrest_v2
-
-
-FeatureScatter(object=sciaticv3_neuralcrest_v2, feature1 = "nCount_RNA", feature2 = "percent.mito")
-FeatureScatter(object=sciaticv3_neuralcrest_v2, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
-FeatureScatter(object=sciaticv3_neuralcrest_v2, feature1 = "nFeature_RNA", feature2 = "nCount_RNA", group.by = "tech") + scale_y_continuous(limits = c(0,30000)) + scale_x_continuous(limits = c(0,7000))
-
-VlnPlot(sciaticv3_neuralcrest_v2, features = c("nFeature_RNA", "nCount_RNA", "percent.mito"), ncol = 3, group.by = "rep", pt.size=0)
-
-
-VlnPlot(sciaticv3_neuralcrest_v2, features = "percent.mito", ncol = 3, group.by = "tech") + scale_y_continuous(limits = c(0,0.05))
-VlnPlot(sciaticv3_neuralcrest_v2, features = "nFeature_RNA", ncol = 3, group.by = "tech") + scale_y_continuous(limits = c(0,7000))
-VlnPlot(sciaticv3_neuralcrest_v2, features = "nCount_RNA", ncol = 3, group.by = "tech") + scale_y_continuous(limits = c(0,30000))
-
-
-sciaticv3_neuralcrest_v2@reductions$umap
-Embeddings(sciaticv3_neuralcrest_v2[["tsne"]])
-
-sciaticv3_neuralcrest_v2 <- RunPCA(sciaticv3_neuralcrest_v2, verbose = FALSE)
-sciaticv3_neuralcrest_v2 <- FindNeighbors(sciaticv3_neuralcrest_v2, dims = 1:15)
-sciaticv3_neuralcrest_v2 <- FindClusters(sciaticv3_neuralcrest_v2, resolution = 0.2)
-sciaticv3_neuralcrest_v2 <- RunUMAP(sciaticv3_neuralcrest_v2, dims = 1:15)
